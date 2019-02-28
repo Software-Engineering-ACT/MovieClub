@@ -1,3 +1,5 @@
+package movieclub;
+
 
 public class Movie {
 	
