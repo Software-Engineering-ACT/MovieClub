@@ -2,18 +2,39 @@ package movieclub;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.BeforeClass;
 
 /**
  *
- * @author chaikal
+ * @author Theodore Chaikalis 
  */
 public class NewEmptyJUnitTest {
+    
+    private static Movie Twister;
+    private static Movie Mickey;
+    private static Movie theRock;
+    private static Rental r1;
+    private static Rental r2, r3;  
+    private static Customer bob;
+    
+    @BeforeClass
+    public static void init(){
+         Twister = new Movie("Twister", new RegularPrice());
+         Mickey = new Movie("Mickey", new ChildrensPrice());
+         theRock = new Movie("The Rock", new ActionPrice());
+         r1 = new Rental(Mickey, 5);
+         r2 = new Rental(Twister,3);
+         r3 = new Rental(theRock, 4);
+
+         bob = new Customer("Bob");
+         bob.addRental(r1);
+         bob.addRental(r2); 
+         bob.addRental(r3);
+                  
+    }
 
      @Test
-     public void testMovieS() {
-         Movie Twister = new Movie("Twister", Movie.REGULAR);
-         Movie Mickey = new Movie("Mickey", Movie.CHILDRENS);
-         
+     public void testMovies() {
          assertEquals("Twister" , Twister.getTitle()); 
          assertEquals("Mickey" , Mickey.getTitle()); 
          assertEquals( Movie.CHILDRENS , Mickey.getPriceCode());
@@ -23,15 +44,7 @@ public class NewEmptyJUnitTest {
      
      @Test
      public void testRental(){
-         Movie Twister = new Movie("Twister", Movie.REGULAR);
-         Movie Mickey = new Movie("Mickey", Movie.CHILDRENS);
-         Rental r1 = new Rental(Mickey, 5);
-         Rental r2 = new Rental(Twister,3);
 
-         Customer bob = new Customer("Bob");
-         bob.addRental(r1);
-         bob.addRental(r2);
-         
          String statement = bob.statement();
          System.out.println(statement);
          
@@ -40,5 +53,13 @@ public class NewEmptyJUnitTest {
          
          double rental2Cost = r2.getRentalCost();
          assertEquals(3.5, rental2Cost, 0.001);
+          
+     }
+     
+     @Test
+     public void testTotalAmount(){
+        double totalAmount = bob.getTotalAmount();
+        
+        assertEquals(23.5, totalAmount, 0.001);
      }
 }
