@@ -75,8 +75,6 @@ public class NewEmptyJUnitTest {
          
          double charge1 = p.getCharge(1);
          assertEquals(3.0, charge1, 0.0000001);
-         int a = 1;
-         int b = 2;
      }
      
      @Test
