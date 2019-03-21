@@ -62,4 +62,15 @@ public class NewEmptyJUnitTest {
         
         assertEquals(23.5, totalAmount, 0.001);
      }
+     
+     
+     @Test
+     public void testNewReleasePrice(){
+         Price p = new NewReleasePrice();
+        double charge10 = p.getCharge(10);
+         assertEquals(30.0, charge10, 0.001);
+         
+         double charge0 = p.getCharge(0);
+         assertEquals(0, charge0, 0.0000001);
+     }
 }
