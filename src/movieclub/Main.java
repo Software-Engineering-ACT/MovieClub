@@ -16,6 +16,7 @@ public class Main {
 		Bob.addRental(aRental);
 		Bob.addRental(bRental);
                 Bob.addRental(cRental);
+                Bob.addRental(cRental);
                 
             double totalAmount = Bob.getTotalAmount();
 		
