@@ -78,4 +78,11 @@ public class NewEmptyJUnitTest {
          int a = 1;
          int b = 2;
      }
+     
+     @Test
+     public void testChildrensPrice(){
+         Price p = new ChildrensPrice();
+        double charge = p.getCharge(3);
+         assertEquals(1.5, charge, 0.0001);
+     }
 }
